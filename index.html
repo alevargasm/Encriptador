@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function codificarTexto() {
+
+        var texto = document.getElementById("mensaje").value;
+        var mensajeCodificado = "";
+        for (var i = 0; i < texto.length; i++) {
+
+            var letra = texto[i];
+            switch (letra) {
+
+                case 'a':
+                    mensajeCodificado = mensajeCodificado + 'ai';
+                    break;
+
+                case 'e':
+                    mensajeCodificado = mensajeCodificado + 'enter';
+                    break;
+
+                case 'i':
+                    mensajeCodificado = mensajeCodificado + 'imes';
+                    break;
+
+                case 'o':
+                    mensajeCodificado = mensajeCodificado + 'ober';
+                    break;
+
+                case 'u':
+                    mensajeCodificado = mensajeCodificado + 'ufat';
+                    break;
+
+                default:
+                    mensajeCodificado = mensajeCodificado + letra;
+                    break;
+
+            }
+        }
+        document.getElementById("resultado").innerHTML = mensajeCodificado;
+        ocultarElementos();
+    }
+    function decodificarTexto() {
+        var texto = document.getElementById("mensaje").value;
+        texto = texto.replace(/ai/gi, 'a');
+        texto = texto.replace(/enter/gi, 'e');
+        texto = texto.replace(/imes/gi, 'i');
+        texto = texto.replace(/ober/gi, 'o');
+        texto = texto.replace(/ufat/gi, 'u');
+        document.getElementById("resultado").innerHTML = texto;
+        ocultarElementos();
+    }
+    function ocultarElementos() {
+        document.getElementById("listaResultado").style.display = "none";
+        document.getElementById("muneco").style.display = "none";
+    }
+    function copiarTexto() {
+        const mensajeResultante = document.getElementById("resultado").value;
+        navigator.clipboard.writeText(mensajeResultante);
+    }
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Encriptador</title>
+    <link rel="stylesheet" href="reset.css">
+</head>
+
+<body>
+    <header>
+        <img src="imagenes/logo.png" alt="Logotipo">
+    </header>
+    <main>
+        <p id="parrafo">texto de prueba</p>
+        <label for="mensaje">Mensaje</label>
+        <textarea cols="70" rows="10" id="mensaje" class="inputMensaje"
+            placeholder="Intoduzca el y texto aqui"></textarea>
+        <section>
+            <img src="imagenes/informacion.png" alt="Logo de informacion">
+            <p>Solo letras minúsculas y sin acentos</p>
+        </section>
+        <section>
+            <input type="submit" value="Codificar" onclick="codificarTexto()">
+            <input type="submit" value="Decodificar" onclick="decodificarTexto()">
+        </section>
+        <div>
+            <img src="imagenes/Muñeco.png" alt="Sin resultado" id="muneco">
+            <p id="resultado">preuba de texto</p>
+            <ul id="listaResultado">
+                <li>Ningun mensaje fue encontrado</li>
+                <li>Ingresa el texto que deseas encriptar o desencriptar</li>
+            </ul>
+            <input type="submit" value="Copiar" onclick="copiarTexto()">
+        </div>
+    </main>
+    <footer>
+        <p class="copyright">&copy Copyright Alejandro Vargas Miranda - 2020</p>
+    </footer>
+</body>
+<footer>
+
+</footer>
+
+</html>
